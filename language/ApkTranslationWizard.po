@@ -1,0 +1,258 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tfrmmain.btnaddtranslations.caption
+msgid "Add Translations"
+msgstr ""
+
+#: tfrmmain.btnaddtranslations.hint
+msgid "Add the new translations made in \"Translations\" section"
+msgstr ""
+
+#: tfrmmain.btncreatedictionary.caption
+msgid "Learn from XML"
+msgstr ""
+
+#: tfrmmain.btncreatedictionary.hint
+msgid "Read already xml translated and add to translations"
+msgstr ""
+
+#: tfrmmain.btndecode.caption
+msgctxt "TFRMMAIN.BTNDECODE.CAPTION"
+msgid "Decode"
+msgstr ""
+
+#: tfrmmain.btndecode.hint
+msgid "Decode APks to project's directory"
+msgstr ""
+
+#: tfrmmain.btnencode.caption
+msgctxt "TFRMMAIN.BTNENCODE.CAPTION"
+msgid "Encode"
+msgstr ""
+
+#: tfrmmain.btngenerateupdate.caption
+msgid "Make update.zip"
+msgstr ""
+
+#: tfrmmain.btngenerateupdate.hint
+msgid "Generate and Sign the update package"
+msgstr ""
+
+#: tfrmmain.btngoogletranslate.caption
+msgid "I'm Feeling lucky"
+msgstr ""
+
+#: tfrmmain.btngoogletranslate.hint
+msgid "Traslate all missing translations using google translate"
+msgstr ""
+
+#: tfrmmain.btnloaddict.caption
+msgid "Load Dict"
+msgstr ""
+
+#: tfrmmain.btnloadfromzipfile.caption
+msgid "Load from Zip File"
+msgstr ""
+
+#: tfrmmain.btnloadfromzipfile.hint
+msgid "Load from ROM or LangPack "
+msgstr ""
+
+#: tfrmmain.btnreadxml.caption
+msgid "Read XML"
+msgstr ""
+
+#: tfrmmain.btnreadxml.hint
+msgid "Read the Xml in original language"
+msgstr ""
+
+#: tfrmmain.btnrefreshapklist.caption
+msgctxt "TFRMMAIN.BTNREFRESHAPKLIST.CAPTION"
+msgid "Refresh"
+msgstr ""
+
+#: tfrmmain.btnrefreshapklist.hint
+msgid "Refresh APK's files list"
+msgstr ""
+
+#: tfrmmain.btnrefreshpacking.caption
+msgctxt "TFRMMAIN.BTNREFRESHPACKING.CAPTION"
+msgid "Refresh"
+msgstr ""
+
+#: tfrmmain.btnrefreshpacking.hint
+msgid "Refresh directory's list"
+msgstr ""
+
+#: tfrmmain.btnsavedict.caption
+msgid "Save Dict"
+msgstr ""
+
+#: tfrmmain.btntranslate.caption
+msgid "GTranslate"
+msgstr ""
+
+#: tfrmmain.btntranslate.hint
+msgid "Translate the selected row using google translator"
+msgstr ""
+
+#: tfrmmain.btntranslatedict.caption
+msgid "Translate"
+msgstr ""
+
+#: tfrmmain.btntranslatedict.hint
+msgid "Make a preview for view missings translations, using the loaded dictionary"
+msgstr ""
+
+#: tfrmmain.btnwritexml.caption
+msgid "WRITE XML"
+msgstr ""
+
+#: tfrmmain.btnwritexml.hint
+msgid "Write translated xml to translated language, using the loaded dictionary"
+msgstr ""
+
+#: tfrmmain.btnwritexml4all.caption
+msgid "WRITE XML for all languages"
+msgstr ""
+
+#: tfrmmain.btnwritexml4all.hint
+msgid "Write translated's XMLs for all existing dictionaries"
+msgstr ""
+
+#: tfrmmain.chkreplaceresourcearsc.caption
+msgid "Replace Resource.arsc"
+msgstr ""
+
+#: tfrmmain.chksignapk.caption
+msgid "Sign the APK"
+msgstr ""
+
+#: tfrmmain.chkstringfromvalues.caption
+msgid "Use \"\\values\\\" as source"
+msgstr ""
+
+#: tfrmmain.chkstringfromvalues.hint
+msgid "Take \\values directory as original language"
+msgstr ""
+
+#: TFRMMAIN.DBGDATA.COLUMNS[0].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.DBGDATA.COLUMNS[0].TCOLUMNTITLE.CAPTION"
+msgid "ApkName"
+msgstr ""
+
+#: TFRMMAIN.DBGDATA.COLUMNS[1].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.DBGDATA.COLUMNS[1].TCOLUMNTITLE.CAPTION"
+msgid "Fieldname"
+msgstr ""
+
+#: TFRMMAIN.DBGDATA.COLUMNS[2].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.DBGDATA.COLUMNS[2].TCOLUMNTITLE.CAPTION"
+msgid "Original"
+msgstr ""
+
+#: TFRMMAIN.DBGDATA.COLUMNS[3].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.DBGDATA.COLUMNS[3].TCOLUMNTITLE.CAPTION"
+msgid "Translated"
+msgstr ""
+
+#: tfrmmain.dbgdata.hint
+msgid "Note: ***** = empty translation"
+msgstr ""
+
+#: TFRMMAIN.DBGDICT.COLUMNS[0].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.DBGDICT.COLUMNS[0].TCOLUMNTITLE.CAPTION"
+msgid "ApkName"
+msgstr ""
+
+#: TFRMMAIN.DBGDICT.COLUMNS[1].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.DBGDICT.COLUMNS[1].TCOLUMNTITLE.CAPTION"
+msgid "FieldName"
+msgstr ""
+
+#: TFRMMAIN.DBGDICT.COLUMNS[2].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.DBGDICT.COLUMNS[2].TCOLUMNTITLE.CAPTION"
+msgid "OriginalText"
+msgstr ""
+
+#: TFRMMAIN.DBGDICT.COLUMNS[3].TCOLUMNTITLE.CAPTION
+msgctxt "TFRMMAIN.DBGDICT.COLUMNS[3].TCOLUMNTITLE.CAPTION"
+msgid "TranslatedText"
+msgstr ""
+
+#: TFRMMAIN.FRMMAIN.CAPTION
+msgctxt "TFRMMAIN.FRMMAIN.CAPTION"
+msgid "ApkTranslationWizard by esvignolo - Version 1.0 (beta5)"
+msgstr ""
+
+#: tfrmmain.label2.caption
+msgid "Availables Packages :"
+msgstr ""
+
+#: tfrmmain.label3.caption
+msgid "Dictionary:"
+msgstr ""
+
+#: tfrmmain.label5.caption
+msgid "Availables for Packing :"
+msgstr ""
+
+#: tfrmmain.label6.caption
+msgid "to"
+msgstr ""
+
+#: tfrmmain.label7.caption
+msgid "Translations:"
+msgstr ""
+
+#: tfrmmain.lblfilterfield.caption
+msgid "Filter by ApkName:"
+msgstr ""
+
+#: tfrmmain.opendialog.title
+msgid "Please select a zip file"
+msgstr ""
+
+#: tfrmmain.selectall2.caption
+msgctxt "TFRMMAIN.SELECTALL2.CAPTION"
+msgid "Select All"
+msgstr ""
+
+#: tfrmmain.selectall3.caption
+msgctxt "TFRMMAIN.SELECTALL3.CAPTION"
+msgid "Select All"
+msgstr ""
+
+#: tfrmmain.tsabout.caption
+msgid "About"
+msgstr ""
+
+#: tfrmmain.tsdecode.caption
+msgctxt "TFRMMAIN.TSDECODE.CAPTION"
+msgid "Decode"
+msgstr ""
+
+#: tfrmmain.tsencode.caption
+msgctxt "TFRMMAIN.TSENCODE.CAPTION"
+msgid "Encode"
+msgstr ""
+
+#: tfrmmain.tslog.caption
+msgid "Log"
+msgstr ""
+
+#: tfrmmain.tstranslations.caption
+msgid "Translations"
+msgstr ""
+
+#: tfrmmain.unselectall2.caption
+msgctxt "TFRMMAIN.UNSELECTALL2.CAPTION"
+msgid "Unselect All"
+msgstr ""
+
+#: tfrmmain.unselectall3.caption
+msgctxt "TFRMMAIN.UNSELECTALL3.CAPTION"
+msgid "Unselect All"
+msgstr ""
+
