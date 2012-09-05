@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 265
+  Left = 617
   Height = 540
-  Top = 146
+  Top = 131
   Width = 600
   Caption = 'ApkTranslationWizard by esvignolo - Version 1.0 (beta5)'
   ClientHeight = 540
@@ -12,7 +12,7 @@ object frmMain: TfrmMain
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poDesktopCenter
-  LCLVersion = '0.9.30.4'
+  LCLVersion = '1.0.1.3'
   object pnlBanner: TPanel
     Left = 0
     Height = 70
@@ -620,7 +620,7 @@ object frmMain: TfrmMain
           TabOrder = 5
         end
         object btnLoadDict: TButton
-          Left = 184
+          Left = 182
           Height = 25
           Top = 0
           Width = 75
@@ -1085,13 +1085,13 @@ object frmMain: TfrmMain
     end
   end
   object dsDictionary: TDatasource
-    left = 456
+    left = 384
     top = 128
   end
   object dsTranslations: TDatasource
     OnDataChange = dsTranslationsDataChange
-    left = 456
-    top = 176
+    left = 400
+    top = 184
   end
   object OpenDialog: TOpenDialog
     Title = 'Please select a zip file'

@@ -180,7 +180,7 @@ begin
   {$if defined(Win32) or defined(Win64)}
   Result := AppendPathDelim(ExtractFilePath(Application.ExeName));
   {$else}
-  Result := AppendPathDelim(AppendPathDelim(GetUserDir) + 'ApkTranslationWizard');
+  Result := AppendPathDelim(ExtractFilePath(paramstr(0)));
   {$endif}
 end;
 
@@ -697,7 +697,7 @@ begin
     for i := 0 to MemDtsTranslations.FieldDefs.Count - 1 do
       MemDtsTranslations.FieldDefs[i].CreateField(MemDtsTranslations);
     MemDtsTranslations.AutoCalcFields := False;
-    MemDtsTranslations.MaxIndexesCount := 20;
+    MemDtsTranslations.MaxIndexesCount := 20000;
     dsTranslations.DataSet := MemDtsTranslations;
     MemDtsTranslations.AddIndex('PKIndex', 'ApkName;FieldName', [ixPrimary], '');
     btnRefreshApkList.Click;
@@ -2160,21 +2160,21 @@ begin
               end;
 
               // if framework-res.apk we must delete the directory without region
-              if LowerCase(ExtractFileName(slDir[i])) =
-                'framework-res.apk' then
-              begin
-                DeleteFile(sXmlTranslatedFile);
-              end;
+              //if LowerCase(ExtractFileName(slDir[i])) =
+              //  'framework-res.apk' then
+              //begin
+               // DeleteFile(sXmlTranslatedFile);
+              //end;
             end;
           end;
 
         end;
 
         // if framework-res.apk we must delete the directory without region
-        if LowerCase(ExtractFileName(slDir[i])) = 'framework-res.apk' then
-        begin
-          RemoveDir(ExtractFilePath(sXmlTranslatedFile));
-        end;
+        //if LowerCase(ExtractFileName(slDir[i])) = 'framework-res.apk' then
+        //begin
+        // RemoveDir(ExtractFilePath(sXmlTranslatedFile));
+        //end;
         pbTranslations.StepIt;
         Application.ProcessMessages;
       end;
@@ -2188,11 +2188,15 @@ begin
     meLog.Lines.Add(DateTimeToStr(now) + ' - END TRANSLATION PROCESS for ' +
       cbOriginalLang.Text + ' to ' + cbTranslatedLang.Text);
     // Run Script AfterWriteXml
-    meLog.Lines.Add
+    if FileExistsUTF8(AppendPathDelim(ApplicationDirectory + csScriptsDir) +
+      'AfterWriteXML' + cbOriginalLang.Text + cbTranslatedLang.Text +
+      csScriptExt) then begin
+         meLog.Lines.Add
     (DateTimeToStr(now) + ' - Running Script AfterWriteXML: ');
-    RunAppInMemo('"' + AppendPathDelim(ApplicationDirectory + csScriptsDir) +
+         RunAppInMemo('"' + AppendPathDelim(ApplicationDirectory + csScriptsDir) +
       'AfterWriteXML' + cbOriginalLang.Text + cbTranslatedLang.Text +
       csScriptExt + '"', meLog);
+    end;
     dsDictionary.DataSet:=MemDtsDictionary;
     MemDtsDictionary.EnableControls;
     btnWriteXml.Enabled := True;

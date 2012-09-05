@@ -381,11 +381,11 @@ begin
 	or ((FCurrentChar = FQuoteChar) and (not InSpecCell)) 
 	or EndOfFile) do
     begin
-      if EndOfLine and (not InSpecCell) then
-      begin
-        AppendStr(FCellBuffer, FLineEnding);
-        SkipEndOfLine;
-      end else
+//      if EndOfLine  then
+//      begin
+//        AppendStr(FCellBuffer, FLineEnding);
+//        SkipEndOfLine;
+//      end else
       begin
         AppendStr(FCellBuffer, FCurrentChar);
 	LastChar:=FCurrentChar;
@@ -399,7 +399,7 @@ begin
     // check if it was escaping
     if FCurrentChar = FQuoteChar then
     begin
-      if not ((FCurrentChar = FQuoteChar) and (LastChar = FQuoteChar) and InSpecCell) then
+//      if not ((FCurrentChar = FQuoteChar) and (LastChar = FQuoteChar) and InSpecCell) then
             AppendStr(FCellBuffer, FCurrentChar);
       QuotationEnd := False;
       LastChar:=FCurrentChar;

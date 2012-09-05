@@ -121,6 +121,11 @@ msgstr ""
 msgid "Write translated's XMLs for all existing dictionaries"
 msgstr ""
 
+#: tfrmmain.caption
+msgctxt "TFRMMAIN.CAPTION"
+msgid "ApkTranslationWizard by esvignolo - Version 1.0 (beta5)"
+msgstr ""
+
 #: tfrmmain.chkreplaceresourcearsc.caption
 msgid "Replace Resource.arsc"
 msgstr ""
@@ -137,23 +142,23 @@ msgstr ""
 msgid "Take \\values directory as original language"
 msgstr ""
 
-#: TFRMMAIN.DBGDATA.COLUMNS[0].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.DBGDATA.COLUMNS[0].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.dbgdata.columns[0].title.caption
+msgctxt "TFRMMAIN.DBGDATA.COLUMNS[0].TITLE.CAPTION"
 msgid "ApkName"
 msgstr ""
 
-#: TFRMMAIN.DBGDATA.COLUMNS[1].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.DBGDATA.COLUMNS[1].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.dbgdata.columns[1].title.caption
+msgctxt "TFRMMAIN.DBGDATA.COLUMNS[1].TITLE.CAPTION"
 msgid "Fieldname"
 msgstr ""
 
-#: TFRMMAIN.DBGDATA.COLUMNS[2].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.DBGDATA.COLUMNS[2].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.dbgdata.columns[2].title.caption
+msgctxt "TFRMMAIN.DBGDATA.COLUMNS[2].TITLE.CAPTION"
 msgid "Original"
 msgstr ""
 
-#: TFRMMAIN.DBGDATA.COLUMNS[3].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.DBGDATA.COLUMNS[3].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.dbgdata.columns[3].title.caption
+msgctxt "TFRMMAIN.DBGDATA.COLUMNS[3].TITLE.CAPTION"
 msgid "Translated"
 msgstr ""
 
@@ -161,29 +166,24 @@ msgstr ""
 msgid "Note: ***** = empty translation"
 msgstr ""
 
-#: TFRMMAIN.DBGDICT.COLUMNS[0].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.DBGDICT.COLUMNS[0].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.dbgdict.columns[0].title.caption
+msgctxt "TFRMMAIN.DBGDICT.COLUMNS[0].TITLE.CAPTION"
 msgid "ApkName"
 msgstr ""
 
-#: TFRMMAIN.DBGDICT.COLUMNS[1].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.DBGDICT.COLUMNS[1].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.dbgdict.columns[1].title.caption
+msgctxt "TFRMMAIN.DBGDICT.COLUMNS[1].TITLE.CAPTION"
 msgid "FieldName"
 msgstr ""
 
-#: TFRMMAIN.DBGDICT.COLUMNS[2].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.DBGDICT.COLUMNS[2].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.dbgdict.columns[2].title.caption
+msgctxt "TFRMMAIN.DBGDICT.COLUMNS[2].TITLE.CAPTION"
 msgid "OriginalText"
 msgstr ""
 
-#: TFRMMAIN.DBGDICT.COLUMNS[3].TCOLUMNTITLE.CAPTION
-msgctxt "TFRMMAIN.DBGDICT.COLUMNS[3].TCOLUMNTITLE.CAPTION"
+#: tfrmmain.dbgdict.columns[3].title.caption
+msgctxt "TFRMMAIN.DBGDICT.COLUMNS[3].TITLE.CAPTION"
 msgid "TranslatedText"
-msgstr ""
-
-#: TFRMMAIN.FRMMAIN.CAPTION
-msgctxt "TFRMMAIN.FRMMAIN.CAPTION"
-msgid "ApkTranslationWizard by esvignolo - Version 1.0 (beta5)"
 msgstr ""
 
 #: tfrmmain.label2.caption
