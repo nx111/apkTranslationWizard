@@ -1,6 +1,11 @@
 *~
 *.o
 *.a
+*.bak
 backup/*
 lib/*
+projects/*
+compiled/*
+components/*
+place-apk-here-for-modding/*
 ApkTranslationWizard

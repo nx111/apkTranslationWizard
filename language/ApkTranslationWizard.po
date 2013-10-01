@@ -39,14 +39,6 @@ msgstr ""
 msgid "Generate and Sign the update package"
 msgstr ""
 
-#: tfrmmain.btngoogletranslate.caption
-msgid "I'm Feeling lucky"
-msgstr ""
-
-#: tfrmmain.btngoogletranslate.hint
-msgid "Traslate all missing translations using google translate"
-msgstr ""
-
 #: tfrmmain.btnloaddict.caption
 msgid "Load Dict"
 msgstr ""
@@ -87,14 +79,6 @@ msgstr ""
 
 #: tfrmmain.btnsavedict.caption
 msgid "Save Dict"
-msgstr ""
-
-#: tfrmmain.btntranslate.caption
-msgid "GTranslate"
-msgstr ""
-
-#: tfrmmain.btntranslate.hint
-msgid "Translate the selected row using google translator"
 msgstr ""
 
 #: tfrmmain.btntranslatedict.caption
@@ -199,7 +183,7 @@ msgid "Availables for Packing :"
 msgstr ""
 
 #: tfrmmain.label6.caption
-msgid "to"
+msgid "->"
 msgstr ""
 
 #: tfrmmain.label7.caption

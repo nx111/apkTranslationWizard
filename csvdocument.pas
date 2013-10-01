@@ -34,6 +34,7 @@
   Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 }
 
+{%RunWorkingDir /home/bc/ApkTranslationWizard/}
 unit CsvDocument;
 
 {$IFDEF FPC}
@@ -56,11 +57,13 @@ type
   private
     procedure SetDelimiter(const AValue: TCSVChar);
     procedure SetQuoteChar(const AValue: TCSVChar);
+    procedure SetShiftChar(const AValue: TCSVChar);
     procedure UpdateCachedChars;
   protected
     // special chars
     FDelimiter: TCSVChar;
     FQuoteChar: TCSVChar;
+    FShiftChar: TCSVChar;
     FLineEnding: String;
     // cached values to speed up special chars operations
     FSpecialChars: TSysCharSet;
@@ -76,6 +79,7 @@ type
     procedure AssignCSVProperties(ASource: TCSVHandler);
     property Delimiter: TCSVChar read FDelimiter write SetDelimiter;
     property QuoteChar: TCSVChar read FQuoteChar write SetQuoteChar;
+    property ShiftChar: TCSVChar read FShiftChar write SetShiftChar;
     property LineEnding: String read FLineEnding write FLineEnding;
     property IgnoreOuterWhitespace: Boolean read FIgnoreOuterWhitespace write FIgnoreOuterWhitespace;
     property QuoteOuterWhitespace: Boolean read FQuoteOuterWhitespace write FQuoteOuterWhitespace;
@@ -285,10 +289,19 @@ begin
   end;
 end;
 
+procedure TCSVHandler.SetShiftChar(const AValue: TCSVChar);
+begin
+  if FShiftChar <> AValue then
+  begin
+    FShiftChar := AValue;
+    UpdateCachedChars;
+  end;
+end;
+
 procedure TCSVHandler.UpdateCachedChars;
 begin
   FDoubleQuote := FQuoteChar + FQuoteChar;
-  FSpecialChars := [CR, LF, FDelimiter, FQuoteChar];
+  FSpecialChars := [CR, LF, FDelimiter, FQuoteChar,FShiftChar];
 end;
 
 constructor TCSVHandler.Create;
@@ -296,6 +309,7 @@ begin
   inherited Create;
   FDelimiter := ',';
   FQuoteChar := '"';
+  FShiftChar := '\';
   FLineEnding := CR + LF;
   FIgnoreOuterWhitespace := False;
   FQuoteOuterWhitespace := True;
@@ -307,6 +321,7 @@ procedure TCSVHandler.AssignCSVProperties(ASource: TCSVHandler);
 begin
   FDelimiter := ASource.FDelimiter;
   FQuoteChar := ASource.FQuoteChar;
+  FShiftChar := ASource.FShiftChar;
   FLineEnding := ASource.FLineEnding;
   FIgnoreOuterWhitespace := ASource.FIgnoreOuterWhitespace;
   FQuoteOuterWhitespace := ASource.FQuoteOuterWhitespace;
@@ -377,29 +392,26 @@ begin
   if InSpecCell then NextChar; //skip the second quotation char
   repeat
     // read value up to next quotation char
-    while not (((FCurrentChar = FQuoteChar) and (LastChar = FQuoteChar) and InSpecCell) 
-	or ((FCurrentChar = FQuoteChar) and (not InSpecCell)) 
+    while not (
+        ((FCurrentChar = FQuoteChar) and (LastChar = FQuoteChar) and InSpecCell and (LastChar<>FShiftChar))
+	or ((FCurrentChar = FQuoteChar) and (not InSpecCell) and (LastChar<>FShiftChar))
 	or EndOfFile) do
     begin
-//      if EndOfLine  then
-//      begin
-//        AppendStr(FCellBuffer, FLineEnding);
-//        SkipEndOfLine;
-//      end else
-      begin
+      if not (FCurrentChar = FShiftChar) then
         AppendStr(FCellBuffer, FCurrentChar);
-	LastChar:=FCurrentChar;
-        NextChar;
-      end;
-    end;
-    // skip quotation char (closing or escaping)
-    if not EndOfFile then
       LastChar:=FCurrentChar;
       NextChar;
-    // check if it was escaping
+    end;
+    // skip quotation char (closing or escaping)
+    if not EndOfFile and (FCurrentChar = FQuoteChar) then
+    begin
+      LastChar:=FCurrentChar;
+      NextChar;
+    end;
+     // check if it was escaping
     if FCurrentChar = FQuoteChar then
     begin
-//      if not ((FCurrentChar = FQuoteChar) and (LastChar = FQuoteChar) and InSpecCell) then
+     // if not ((FCurrentChar = FQuoteChar) and (LastChar = FQuoteChar) and InSpecCell) then
             AppendStr(FCellBuffer, FCurrentChar);
       QuotationEnd := False;
       LastChar:=FCurrentChar;

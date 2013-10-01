@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<CONFIG>
-  <Compiler Value="/usr/bin/fpc" Date="1342149962"/>
-  <Params Value=" -MObjFPC -Sgim -CX -O2 -gs -gl -vew -l -Fi/home/bc/temp/work/apkTranslationWizard/components/lnet/lib/sys -Fu/home/bc/temp/work/apkTranslationWizard/components/lnet/lib -Fu/home/bc/temp/work/apkTranslationWizard/components/lnet/lazaruspackage/ -FU/home/bc/temp/work/apkTranslationWizard/components/lnet/lazaruspackage/lib/i386-linux/ -dLNET_BASE lnetbase.pas"/>
-</CONFIG>

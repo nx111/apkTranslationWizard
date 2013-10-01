@@ -1,3 +1,5 @@
+{%BuildWorkingDir ~/ApkTranslationWizard}
+{%RunWorkingDir ~/ApkTranslationWizard}
 unit Main;
 
 {$mode objfpc}{$H+}
@@ -7,17 +9,8 @@ interface
 uses
   Classes, SysUtils, DB, BufDataset,  FileUtil, Forms, Controls, Graphics, Dialogs, ComCtrls,
   StdCtrls, ExtCtrls, Menus, variants, CheckLst, StrUtils, DBGrids, Grids, Process,
-  DOM, XMLRead, XMLWrite, typinfo, lhttp, lNet ,CsvDocument;
+  DOM, XMLRead, XMLWrite, typinfo,CsvDocument;
 
-type
-  THTTPHandler = class
-  public
-    procedure ClientDisconnect(ASocket: TLSocket);
-    procedure ClientDoneInput(ASocket: TLHTTPClientSocket);
-    procedure ClientError(const Msg: string; aSocket: TLSocket);
-    function ClientInput(ASocket: TLHTTPClientSocket; ABuffer: PChar;
-      ASize: integer): integer;
-  end;
 
 type
 
@@ -29,14 +22,12 @@ type
     btnDecode: TButton;
     btnEncode: TButton;
     btnGenerateUpdate: TButton;
-    btnGoogleTranslate: TButton;
     btnLoadDict: TButton;
     btnLoadFromZipFile: TButton;
     btnReadXml: TButton;
     btnRefreshApkList: TButton;
     btnRefreshPacking: TButton;
     btnSaveDict: TButton;
-    btnTranslate: TButton;
     btnTranslateDict: TButton;
     btnWriteXml: TButton;
     btnWriteXML4All: TButton;
@@ -96,14 +87,12 @@ type
     procedure btnDecodeClick(Sender: TObject);
     procedure btnEncodeClick(Sender: TObject);
     procedure btnGenerateUpdateClick(Sender: TObject);
-    procedure btnGoogleTranslateClick(Sender: TObject);
     procedure btnLoadDictClick(Sender: TObject);
     function LoadFromZipFile(sZipFile: string): boolean;
     procedure btnLoadFromZipFileClick(Sender: TObject);
     procedure btnReadXmlClick(Sender: TObject);
     procedure btnRefreshApkListClick(Sender: TObject);
     procedure btnRefreshPackingClick(Sender: TObject);
-    procedure btnTranslateClick(Sender: TObject);
     procedure btnTranslateDictClick(Sender: TObject);
     procedure btnWriteXML4AllClick(Sender: TObject);
     procedure btnWriteXmlClick(Sender: TObject);
@@ -123,8 +112,6 @@ type
     function ReplaceResources(sResourcesDir, sApkFile: string): boolean;
     function ReplaceResourcesArsc(sOriginalApk, sDestinationApk: string): boolean;
     procedure RunAppInMemo(const sApp: string; AMemo: TMemo);
-    function GoogleTranslate(Source: string; langpair: string;
-      var resultString: string): boolean;
     procedure LoadLanguages;
     procedure LoadCombos;
     function GenerateUpdateZip(sZipFile: string): boolean;
@@ -139,6 +126,7 @@ type
     MemDtsTranslations: TBufDataset;
     MemDtsDictionary: TBufDataset;
     MemDtsLanguages: TBufDataset;
+    function EncodeString(source:string;dest:string):string;
    public
     { public declarations }
  end;
@@ -160,13 +148,9 @@ const
 
 var
   frmMain: TfrmMain;
-  HttpClient: TLHTTPClient;
-  dummy: THTTPHandler;
   slFilesToTranslate: TStringList;
   giActualRecord: integer;
   gsFilterField: string;
-  HTTPBuffer, TranslatedString: string;
-  HTTPFinished: boolean;
 
 implementation
 
@@ -346,55 +330,6 @@ begin
     end;
 end;
 
-procedure THTTPHandler.ClientError(const Msg: string; aSocket: TLSocket);
-begin
-  frmMain.meLog.Lines.Add('gTranslate Error: '+Msg);
-  HTTPFinished := True;
-end;
-
-procedure THTTPHandler.ClientDisconnect(ASocket: TLSocket);
-begin
-  HTTPFinished := True;
-end;
-
-procedure THTTPHandler.ClientDoneInput(ASocket: TLHTTPClientSocket);
-begin
-  ASocket.Disconnect;
-end;
-
-function THTTPHandler.ClientInput(ASocket: TLHTTPClientSocket;
-  ABuffer: PChar; ASize: integer): integer;
-var
-  oldLength: dword;
-  status, response: string;
-begin
-  try
-    oldLength := Length(HTTPBuffer);
-    setlength(HTTPBuffer, oldLength + ASize);
-    move(ABuffer^, HTTPBuffer[oldLength + 1], ASize);
-    Result := aSize; // tell the http buffer we read it all
-    Result := aSize; // tell the http buffer we read it all
-    // tell the http buffer we read it all
-    status := Copy(HTTPBuffer, pos('"responseStatus":', HTTPBuffer) +
-      18, length(HTTPBuffer));
-    status := Copy(status, 0, pos('}', status) - 1);
-
-    if (status = '200') then
-    begin // status is OK
-      response := Copy(HTTPBuffer, pos('"translatedText":', HTTPBuffer) +
-        18, length(HTTPBuffer));
-      TranslatedString := Copy(response, 0, pos('"}, "responseDetails"', response) - 1);
-    end
-    else
-    begin // an error occurred
-      TranslatedString := '';
-    end;
-
-  except
-    TranslatedString := '';
-  end;
-end;
-
 procedure TfrmMain.LoadLanguages;
 var
   Reader: TextFile;
@@ -469,39 +404,6 @@ begin
       cbOriginalLang.ItemIndex := iOrig;
     if iTrans <> -1 then
       cbTranslatedLang.ItemIndex := iTrans;
-  end;
-end;
-
-function TfrmMain.GoogleTranslate(Source: string; langpair: string;
-  var resultString: string): boolean;
-begin
-  try
-    try
-      HTTPBuffer := '';
-      HTTPClient := TLHTTPClient.Create(self);
-      HttpClient.OnDisconnect := @dummy.ClientDisconnect;
-      HttpClient.OnDoneInput := @dummy.ClientDoneInput;
-      HttpClient.OnError := @dummy.ClientError;
-      HttpClient.OnInput := @dummy.ClientInput;
-      HTTPClient.AddExtraHeader('Referer: http://www.microsoft.com');
-      HTTPClient.AddExtraHeader('UserAgent: IE6.0');
-      HTTPClient.Host := 'ajax.googleapis.com';
-      HTTPClient.URI := '/ajax/services/language/translate?v=1.0&q=' +
-        URLEncode(Source) + '&langpair=' + langpair;
-      HTTPClient.Port := 80;
-      HTTPClient.Timeout := 30;
-      HTTPClient.SendRequest;
-      HTTPFinished := False;
-      // Wait until OnDoneInput or OnError
-      while (not HTTPFinished) do
-        HttpClient.CallAction;
-      resultString := TranslatedString;
-      Result := True;
-    except
-      Result := False;
-    end;
-  finally
-    HttpClient.Free;
   end;
 end;
 
@@ -997,48 +899,6 @@ begin
   end;
 end;
 
-procedure TfrmMain.btnGoogleTranslateClick(Sender: TObject);
-var
-  sValue: string;
-begin
-  if not MemDtsTranslations.IsEmpty then
-  begin
-    if MessageDlg('Confirmation', 'Are you sure encode the files selected?',
-      mtConfirmation, [mbNo, mbYes], 1) = mrYes then
-      try
-        btnGoogleTranslate.Enabled := False;
-        MemDtsTranslations.First;
-        while not MemDtsTranslations.EOF do
-        begin
-          try
-            if trim(MemDtsTranslations.FieldByName('TranslatedText')
-              .AsWideString) = '' then
-            begin
-              if googleTranslate(
-                MemDtsTranslations.FieldByName('OriginalText').AsWideString,
-                LowerCase(cbOriginalLang.Text) + '|' +
-                LowerCase(cbTranslatedLang.Text), sValue) then
-              begin
-                MemDtsTranslations.Edit;
-                MemDtsTranslations.FieldByName('TranslatedText').AsWideString :=
-                  sValue;
-                MemDtsTranslations.Post;
-                Application.ProcessMessages;
-              end;
-              // else // error
-              // ShowMessage('Error: ' + sRes);
-            end;
-          finally
-            MemDtsTranslations.Next;
-          end;
-        end;
-      finally
-        btnGoogleTranslate.Enabled := True;
-      end;
-  end;
-end;
-
-
 
 procedure TfrmMain.btnCreateDictionaryClick(Sender: TObject);
 var
@@ -1429,7 +1289,6 @@ begin
   end;
 end;
 
-
 function TfrmMain.LoadFromZipFile(sZipFile: string): boolean;
 begin
   try
@@ -1532,7 +1391,7 @@ begin
           begin
             sName := '';
             ReadXMLFile(XMLDocument, sXmlFile);
-            XMLDocument.Encoding := 'UTF-8';
+            //XMLDocument.Encoding := 'UTF-8';
             Resources := XMLDocument.DocumentElement;
             // strings.xml
             if slFilesToTranslate[j] = 'strings.xml' then
@@ -1713,35 +1572,6 @@ begin
   end;
 end;
 
-procedure TfrmMain.btnTranslateClick(Sender: TObject);
-var
-  sValue: string;
-begin
-  if MessageDlg('Confirmation', 'Want to translate using google?',
-    mtConfirmation, [mbYes, mbNo], 1) = mrYes then
-  begin
-    if not MemDtsTranslations.IsEmpty then
-    begin
-      try
-        btnTranslate.Enabled := False;
-        if trim(MemDtsTranslations.FieldByName('TranslatedText').AsWideString)
-          = '' then
-          if GoogleTranslate(MemDtsTranslations.FieldByName('OriginalText')
-            .AsWideString, LowerCase(cbOriginalLang.Text) + '|' +
-            LowerCase(cbTranslatedLang.Text), sValue) then
-          begin
-            MemDtsTranslations.Edit;
-            MemDtsTranslations.FieldByName('TranslatedText').AsWideString :=
-              sValue;
-            MemDtsTranslations.Post;
-            Application.ProcessMessages;
-          end;
-      finally
-        btnTranslate.Enabled := True;
-      end;
-    end;
-  end;
-end;
 
 procedure TfrmMain.btnTranslateDictClick(Sender: TObject);
 begin
@@ -1854,7 +1684,7 @@ begin
     Screen.Cursor := crHourGlass;
     XMLDocument := TXMLDocument.Create;
     Resources := XMLDocument.DocumentElement;
-    XMLDocument.Encoding := 'UTF-8';
+    //XMLDocument.Encoding := 'UTF-8';
     slDir := TStringList.Create;
     slLocLang := TStringList.Create;
     GetSubDirectories(ApplicationDirectory + csOutputDir,
@@ -1948,7 +1778,7 @@ begin
               begin
                 sName := '';
                 ReadXMLFile(XMLDocument, sXmlFile);
-                XMLDocument.Encoding := 'UTF-8';
+                //XMLDocument.Encoding := 'UTF-8';
                 Resources := XMLDocument.DocumentElement;
                 // strings.xml
                 if slFilesToTranslate[j] = 'strings.xml' then
@@ -2160,21 +1990,22 @@ begin
               end;
 
               // if framework-res.apk we must delete the directory without region
-              //if LowerCase(ExtractFileName(slDir[i])) =
-              //  'framework-res.apk' then
-              //begin
-               // DeleteFile(sXmlTranslatedFile);
-              //end;
+              if ( LowerCase(ExtractFileName(slDir[i])) = 'framework-res.apk' )
+		 and (pos('-',sXmlTranslatedFile) = 0 ) then
+              begin
+                 DeleteFile(sXmlTranslatedFile);
+              end;
             end;
           end;
 
         end;
 
         // if framework-res.apk we must delete the directory without region
-        //if LowerCase(ExtractFileName(slDir[i])) = 'framework-res.apk' then
-        //begin
-        // RemoveDir(ExtractFilePath(sXmlTranslatedFile));
-        //end;
+        if (LowerCase(ExtractFileName(slDir[i])) = 'framework-res.apk' )
+ 	   and (pos('-',sXmlTranslatedFile) = 0 ) then
+        begin
+           RemoveDir(ExtractFilePath(sXmlTranslatedFile));
+        end;
         pbTranslations.StepIt;
         Application.ProcessMessages;
       end;
@@ -2259,6 +2090,7 @@ begin
   gsFilterField := Column.FieldName;
   edtFilter.Text := '';
   lblFilterField.Caption := 'Filter by ' + Column.FieldName + ':';
+
 end;
 
 procedure TfrmMain.dsTranslationsDataChange(Sender: TObject; Field: TField);
@@ -2309,6 +2141,7 @@ function TfrmMain.SaveDictionary(sFile: string): boolean;
 var
   Writer: TextFile;
   sLine: UTF8String;
+  Oencoded,Tencoded:string;
 begin
   try
     Result := False;
@@ -2321,11 +2154,13 @@ begin
     MemDtsDictionary.DisableControls;
     while not MemDtsDictionary.EOF do
     begin
+      Oencoded:='';
+      Tencoded:='';
       sLine := '"' + MemDtsDictionary.FieldByName('ApkName')
         .AsString + '","' + MemDtsDictionary.FieldByName('FieldName')
-        .AsString + '","' + MemDtsDictionary.FieldByName('OriginalText')
-        .AsString + '","' + MemDtsDictionary.FieldByName('TranslatedText')
-        .AsString + '",';
+        .AsString + '","' + EncodeString(MemDtsDictionary.FieldByName('OriginalText').AsString,Oencoded)
+         + '","' + EncodeString(MemDtsDictionary.FieldByName('TranslatedText').AsString,Tencoded)
+         + '",';
       Writeln(Writer, sLine);
       MemDtsDictionary.Next;
     end;
@@ -2368,7 +2203,21 @@ begin
   end;
 end;
 
+function TfrmMain.EncodeString(source:string;dest:string):string;
+var
+  pos:integer;
+  FCurrent:string;
+begin
+  for pos:=1 to length(source) do
+  begin
+       FCurrent:=midstr(source,pos,1);
+       if (FCurrent='''') or (FCurrent='"') or (FCurrent=',') or (FCurrent='\') then
+             appendStr(dest,'\');
+       appendStr(dest,FCurrent);
+  end;
+  result:=dest;
 
+end;
 
 end.
 

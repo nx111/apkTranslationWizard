@@ -1,26 +1,26 @@
 object frmMain: TfrmMain
-  Left = 617
+  Left = 568
   Height = 540
-  Top = 131
-  Width = 600
+  Top = 102
+  Width = 690
   Caption = 'ApkTranslationWizard by esvignolo - Version 1.0 (beta5)'
   ClientHeight = 540
-  ClientWidth = 600
+  ClientWidth = 690
   Color = 15716734
   Constraints.MinHeight = 500
   Constraints.MinWidth = 570
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poDesktopCenter
-  LCLVersion = '1.0.1.3'
+  LCLVersion = '1.0.12.0'
   object pnlBanner: TPanel
     Left = 0
     Height = 70
     Top = 0
-    Width = 600
+    Width = 690
     Align = alTop
     ClientHeight = 70
-    ClientWidth = 600
+    ClientWidth = 690
     TabOrder = 0
     object ImageBannerDer: TImage
       Left = 1
@@ -157,7 +157,7 @@ object frmMain: TfrmMain
       }
     end
     object ImageBannerDer1: TImage
-      Left = 291
+      Left = 381
       Height = 68
       Top = 1
       Width = 308
@@ -447,7 +447,7 @@ object frmMain: TfrmMain
     Left = 0
     Height = 470
     Top = 70
-    Width = 600
+    Width = 690
     ActivePage = tsTranslations
     Align = alClient
     TabIndex = 1
@@ -455,20 +455,20 @@ object frmMain: TfrmMain
     object tsDecode: TTabSheet
       Caption = 'Decode'
       ClientHeight = 439
-      ClientWidth = 596
+      ClientWidth = 686
       object pnlDecodeTop: TPanel
         Left = 0
         Height = 35
         Top = 0
-        Width = 596
+        Width = 686
         Align = alTop
         BevelOuter = bvNone
         ClientHeight = 35
-        ClientWidth = 596
+        ClientWidth = 686
         TabOrder = 0
         object Label2: TLabel
           Left = 3
-          Height = 19
+          Height = 18
           Top = 6
           Width = 143
           Caption = 'Availables Packages :'
@@ -489,19 +489,19 @@ object frmMain: TfrmMain
       end
       object pnlDecodeMiddle: TPanel
         Left = 0
-        Height = 329
+        Height = 346
         Top = 35
-        Width = 596
+        Width = 686
         Align = alClient
         BevelOuter = bvNone
-        ClientHeight = 329
-        ClientWidth = 596
+        ClientHeight = 346
+        ClientWidth = 686
         TabOrder = 1
         object chklstApk: TCheckListBox
           Left = 0
-          Height = 329
+          Height = 346
           Top = 0
-          Width = 460
+          Width = 581
           Align = alLeft
           ItemHeight = 0
           PopupMenu = PopupPacking
@@ -512,15 +512,15 @@ object frmMain: TfrmMain
       end
       object pnlDecodeBottom: TPanel
         Left = 0
-        Height = 75
-        Top = 364
-        Width = 596
+        Height = 58
+        Top = 381
+        Width = 686
         Align = alBottom
-        ClientHeight = 75
-        ClientWidth = 596
+        ClientHeight = 58
+        ClientWidth = 686
         TabOrder = 2
         object btnDecode: TButton
-          Left = 220
+          Left = 238
           Height = 25
           Hint = 'Decode APks to project''s directory'
           Top = 8
@@ -532,11 +532,11 @@ object frmMain: TfrmMain
           TabOrder = 0
         end
         object btnLoadFromZipFile: TButton
-          Left = 341
+          Left = 334
           Height = 25
           Hint = 'Load from ROM or LangPack '
           Top = 8
-          Width = 120
+          Width = 144
           Caption = 'Load from Zip File'
           OnClick = btnLoadFromZipFileClick
           ParentShowHint = False
@@ -545,9 +545,9 @@ object frmMain: TfrmMain
         end
         object pbDecode: TProgressBar
           Left = 1
-          Height = 28
-          Top = 46
-          Width = 594
+          Height = 15
+          Top = 42
+          Width = 684
           Align = alBottom
           Step = 1
           TabOrder = 2
@@ -557,38 +557,46 @@ object frmMain: TfrmMain
     object tsTranslations: TTabSheet
       Caption = 'Translations'
       ClientHeight = 439
-      ClientWidth = 596
+      ClientWidth = 686
       object pnlTranslationsTop: TPanel
         Left = 0
         Height = 35
         Top = 0
-        Width = 596
+        Width = 686
         Align = alTop
         BevelOuter = bvNone
         ClientHeight = 35
-        ClientWidth = 596
+        ClientWidth = 686
         TabOrder = 0
         object Label3: TLabel
           Left = 3
-          Height = 19
-          Top = 6
-          Width = 74
+          Height = 18
+          Top = 14
+          Width = 80
           Caption = 'Dictionary:'
+          Font.Height = -13
+          Font.Name = 'Sans'
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object Label6: TLabel
-          Left = 112
-          Height = 19
-          Top = 6
-          Width = 16
-          Caption = 'to'
+          Left = 134
+          Height = 18
+          Top = 11
+          Width = 17
+          Caption = '->'
+          Font.Height = -13
+          Font.Name = 'Sans'
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object cbOriginalLang: TComboBox
-          Left = 64
-          Height = 31
-          Top = 0
-          Width = 45
+          Left = 84
+          Height = 27
+          Top = 5
+          Width = 48
           ItemHeight = 0
           Items.Strings = (
             ''
@@ -597,21 +605,25 @@ object frmMain: TfrmMain
           TabOrder = 0
         end
         object cbTranslatedLang: TComboBox
-          Left = 128
-          Height = 31
-          Top = 0
-          Width = 45
+          Left = 150
+          Height = 26
+          Top = 6
+          Width = 48
+          AutoSize = False
+          Font.Height = -13
+          Font.Name = 'Sans'
           ItemHeight = 0
           OnChange = cbTranslatedLangChange
+          ParentFont = False
           Style = csDropDownList
           TabOrder = 1
         end
         object btnCreateDictionary: TButton
-          Left = 495
+          Left = 558
           Height = 25
           Hint = 'Read already xml translated and add to translations'
-          Top = 0
-          Width = 100
+          Top = 7
+          Width = 120
           Anchors = [akTop, akRight]
           Caption = 'Learn from XML'
           OnClick = btnCreateDictionaryClick
@@ -620,29 +632,29 @@ object frmMain: TfrmMain
           TabOrder = 5
         end
         object btnLoadDict: TButton
-          Left = 182
+          Left = 206
           Height = 25
-          Top = 0
+          Top = 7
           Width = 75
           Caption = 'Load Dict'
           OnClick = btnLoadDictClick
           TabOrder = 2
         end
         object btnSaveDict: TButton
-          Left = 265
+          Left = 294
           Height = 25
-          Top = 0
+          Top = 7
           Width = 75
           Caption = 'Save Dict'
           OnClick = btnSaveDictClick
           TabOrder = 3
         end
         object BtnAddTranslations: TButton
-          Left = 389
+          Left = 430
           Height = 25
           Hint = 'Add the new translations made in "Translations" section'
-          Top = 0
-          Width = 100
+          Top = 7
+          Width = 124
           Anchors = [akTop, akRight]
           Caption = 'Add Translations'
           OnClick = BtnAddTranslationsClick
@@ -655,17 +667,17 @@ object frmMain: TfrmMain
         Left = 0
         Height = 154
         Top = 35
-        Width = 596
+        Width = 686
         Align = alTop
         BevelOuter = bvNone
         ClientHeight = 154
-        ClientWidth = 596
+        ClientWidth = 686
         TabOrder = 1
         object dbgDict: TDBGrid
           Left = 0
           Height = 154
           Top = 0
-          Width = 596
+          Width = 686
           Align = alClient
           AlternateColor = 13425103
           Color = clWhite
@@ -701,27 +713,31 @@ object frmMain: TfrmMain
       end
       object pnlTranslationsMiddle: TPanel
         Left = 0
-        Height = 70
+        Height = 64
         Top = 189
-        Width = 596
+        Width = 686
         Align = alTop
         BevelOuter = bvNone
-        ClientHeight = 70
-        ClientWidth = 596
+        ClientHeight = 64
+        ClientWidth = 686
         TabOrder = 2
         OnClick = pnlTranslationsMiddleClick
         object Label7: TLabel
           Left = 3
-          Height = 19
-          Top = 55
-          Width = 87
+          Height = 18
+          Top = 38
+          Width = 95
           Caption = 'Translations:'
+          Font.Height = -13
+          Font.Name = 'Sans'
+          Font.Style = [fsBold]
           ParentColor = False
+          ParentFont = False
         end
         object lblFilterField: TLabel
-          Left = 310
-          Height = 19
-          Top = 55
+          Left = 400
+          Height = 18
+          Top = 38
           Width = 130
           Anchors = [akTop, akRight]
           Caption = 'Filter by ApkName:'
@@ -751,38 +767,12 @@ object frmMain: TfrmMain
           ShowHint = True
           TabOrder = 1
         end
-        object btnTranslate: TButton
-          Left = 389
-          Height = 25
-          Hint = 'Translate the selected row using google translator'
-          Top = 4
-          Width = 100
-          Anchors = [akTop, akRight]
-          Caption = 'GTranslate'
-          OnClick = btnTranslateClick
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 3
-        end
-        object btnGoogleTranslate: TButton
-          Left = 495
-          Height = 25
-          Hint = 'Traslate all missing translations using google translate'
-          Top = 4
-          Width = 100
-          Anchors = [akTop, akRight]
-          Caption = 'I''m Feeling lucky'
-          OnClick = btnGoogleTranslateClick
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 4
-        end
         object btnWriteXml: TButton
-          Left = 243
+          Left = 350
           Height = 25
           Hint = 'Write translated xml to translated language, using the loaded dictionary'
           Top = 4
-          Width = 129
+          Width = 99
           Anchors = [akTop, akLeft, akRight]
           Caption = 'WRITE XML'
           OnClick = btnWriteXmlClick
@@ -791,58 +781,64 @@ object frmMain: TfrmMain
           TabOrder = 2
         end
         object chkStringFromValues: TCheckBox
-          Left = 3
+          Left = 158
           Height = 24
           Hint = 'Take \values directory as original language'
-          Top = 32
-          Width = 186
+          Top = 35
+          Width = 184
           Caption = 'Use "\values\" as source'
           Checked = True
+          Color = 15716735
+          Font.Height = -13
+          Font.Name = 'Sans'
+          ParentColor = False
+          ParentFont = False
           ParentShowHint = False
           ShowHint = True
           State = cbChecked
-          TabOrder = 6
+          TabOrder = 4
         end
         object edtFilter: TEdit
-          Left = 450
-          Height = 28
-          Top = 47
+          Left = 526
+          Height = 27
+          Top = 32
           Width = 146
           Anchors = [akTop, akRight]
           OnChange = edtFilterChange
-          TabOrder = 7
+          TabOrder = 5
         end
         object btnWriteXML4All: TButton
-          Left = 205
+          Left = 454
           Height = 25
           Hint = 'Write translated''s XMLs for all existing dictionaries'
-          Top = 29
-          Width = 184
+          Top = 4
+          Width = 201
           Anchors = [akTop, akLeft, akRight]
           Caption = 'WRITE XML for all languages'
           OnClick = btnWriteXML4AllClick
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 5
+          TabOrder = 3
         end
       end
       object pnlTranslations2: TPanel
         Left = 0
-        Height = 154
-        Top = 259
-        Width = 596
+        Height = 171
+        Top = 253
+        Width = 686
         Align = alClient
         BevelOuter = bvNone
-        ClientHeight = 154
-        ClientWidth = 596
+        ClientHeight = 171
+        ClientWidth = 686
         TabOrder = 3
         object dbgData: TDBGrid
           Left = 0
-          Height = 154
+          Height = 171
           Hint = 'Note: ***** = empty translation'
           Top = 0
-          Width = 596
+          Width = 686
           Align = alClient
+          Anchors = []
           Color = clWhite
           Columns = <          
             item
@@ -866,6 +862,7 @@ object frmMain: TfrmMain
               FieldName = 'TranslatedText'
             end>
           DataSource = dsTranslations
+          Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgHeaderHotTracking]
           ShowHint = True
           TabOrder = 0
           TitleFont.Color = clWindowText
@@ -879,19 +876,19 @@ object frmMain: TfrmMain
       end
       object pnlTranslationsBottom: TPanel
         Left = 0
-        Height = 26
-        Top = 413
-        Width = 596
+        Height = 15
+        Top = 424
+        Width = 686
         Align = alBottom
         BevelOuter = bvNone
-        ClientHeight = 26
-        ClientWidth = 596
+        ClientHeight = 15
+        ClientWidth = 686
         TabOrder = 4
         object pbTranslations: TProgressBar
           Left = 0
-          Height = 26
+          Height = 15
           Top = 0
-          Width = 596
+          Width = 686
           Align = alClient
           Step = 1
           TabOrder = 0
@@ -901,22 +898,22 @@ object frmMain: TfrmMain
     object tsEncode: TTabSheet
       Caption = 'Encode'
       ClientHeight = 439
-      ClientWidth = 596
+      ClientWidth = 686
       object pnlEncodeTop: TPanel
         Left = 0
         Height = 35
         Top = 0
-        Width = 592
+        Width = 686
         Align = alTop
         BevelOuter = bvNone
         ClientHeight = 35
-        ClientWidth = 592
+        ClientWidth = 686
         TabOrder = 0
         object Label5: TLabel
           Left = 3
-          Height = 16
+          Height = 18
           Top = 6
-          Width = 123
+          Width = 156
           Caption = 'Availables for Packing :'
           ParentColor = False
         end
@@ -935,17 +932,17 @@ object frmMain: TfrmMain
       end
       object pnlEncodeMiddle: TPanel
         Left = 0
-        Height = 332
+        Height = 329
         Top = 35
-        Width = 592
+        Width = 686
         Align = alClient
         BevelOuter = bvNone
-        ClientHeight = 332
-        ClientWidth = 592
+        ClientHeight = 329
+        ClientWidth = 686
         TabOrder = 1
         object chkListForPacking: TCheckListBox
           Left = 0
-          Height = 332
+          Height = 329
           Top = 0
           Width = 460
           Align = alLeft
@@ -959,12 +956,12 @@ object frmMain: TfrmMain
       object pnlEncodeBottom: TPanel
         Left = 0
         Height = 75
-        Top = 367
-        Width = 592
+        Top = 364
+        Width = 686
         Align = alBottom
         BevelOuter = bvNone
         ClientHeight = 75
-        ClientWidth = 592
+        ClientWidth = 686
         TabOrder = 2
         object btnEncode: TButton
           Left = 220
@@ -977,27 +974,27 @@ object frmMain: TfrmMain
         end
         object chkSignApk: TCheckBox
           Left = 3
-          Height = 19
+          Height = 24
           Top = 28
-          Width = 88
+          Width = 110
           Caption = 'Sign the APK'
           TabOrder = 3
         end
         object chkReplaceResourceArsc: TCheckBox
           Left = 3
-          Height = 19
+          Height = 24
           Top = 8
-          Width = 136
+          Width = 176
           Caption = 'Replace Resource.arsc'
           Checked = True
           State = cbChecked
           TabOrder = 0
         end
         object btnGenerateUpdate: TButton
-          Left = 340
+          Left = 318
           Height = 25
           Hint = 'Generate and Sign the update package'
-          Top = 8
+          Top = 7
           Width = 120
           Caption = 'Make update.zip'
           OnClick = btnGenerateUpdateClick
@@ -1007,9 +1004,9 @@ object frmMain: TfrmMain
         end
         object pbEncode: TProgressBar
           Left = 0
-          Height = 28
-          Top = 47
-          Width = 592
+          Height = 15
+          Top = 60
+          Width = 686
           Align = alBottom
           Step = 1
           TabOrder = 4
@@ -1019,12 +1016,12 @@ object frmMain: TfrmMain
     object tsLog: TTabSheet
       Caption = 'Log'
       ClientHeight = 439
-      ClientWidth = 596
+      ClientWidth = 686
       object meLog: TMemo
         Left = 0
         Height = 439
         Top = 0
-        Width = 596
+        Width = 686
         Align = alClient
         ScrollBars = ssAutoBoth
         TabOrder = 0
@@ -1033,12 +1030,12 @@ object frmMain: TfrmMain
     object tsAbout: TTabSheet
       Caption = 'About'
       ClientHeight = 439
-      ClientWidth = 596
+      ClientWidth = 686
       object meAbout: TMemo
         Left = 0
-        Height = 442
+        Height = 439
         Top = 0
-        Width = 592
+        Width = 686
         Align = alClient
         Lines.Strings = (
           'APK Translation Wizard by esvignolo'
@@ -1098,13 +1095,13 @@ object frmMain: TfrmMain
     DefaultExt = '.zip'
     Filter = 'Zip Files|*.zip|All Files|*.*'
     FilterIndex = 0
-    left = 456
-    top = 80
+    left = 256
+    top = 8
   end
   object SaveDialog: TSaveDialog
     DefaultExt = '.zip'
     Filter = 'Zip Files|*.zip|All Files|*.*'
-    left = 488
-    top = 80
+    left = 312
+    top = 8
   end
 end
