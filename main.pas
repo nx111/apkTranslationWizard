@@ -31,22 +31,23 @@ type
     btnTranslateDict: TButton;
     btnWriteXml: TButton;
     btnWriteXML4All: TButton;
+    btSearch: TButton;
     cbOriginalLang: TComboBox;
     cbTranslatedLang: TComboBox;
     chkListForPacking: TCheckListBox;
     chklstApk: TCheckListBox;
     chkReplaceResourceArsc: TCheckBox;
     chkSignApk: TCheckBox;
-    chkStringFromValues: TCheckBox;
+    cbSearchField: TComboBox;
     dsDictionary: TDatasource;
     dbgData: TDBGrid;
     dbgDict: TDBGrid;
     dsTranslations: TDatasource;
+    edSearch: TEdit;
     edtFilter: TEdit;
-    ImageBannerDer: TImage;
-    ImageBannerDer1: TImage;
     Label2: TLabel;
     Label3: TLabel;
+    Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
@@ -54,7 +55,6 @@ type
     meAbout: TMemo;
     meLog: TMemo;
     OpenDialog: TOpenDialog;
-    pnlBanner: TPanel;
     pnlEncodeBottom: TPanel;
     pnlEncodeMiddle: TPanel;
     pnlEncodeTop: TPanel;
@@ -88,6 +88,7 @@ type
     procedure btnEncodeClick(Sender: TObject);
     procedure btnGenerateUpdateClick(Sender: TObject);
     procedure btnLoadDictClick(Sender: TObject);
+    procedure btSearchClick(Sender: TObject);
     function LoadFromZipFile(sZipFile: string): boolean;
     procedure btnLoadFromZipFileClick(Sender: TObject);
     procedure btnReadXmlClick(Sender: TObject);
@@ -1289,6 +1290,41 @@ begin
   end;
 end;
 
+procedure TfrmMain.btSearchClick(Sender: TObject);
+var
+  sTranslatedText, sOriginalText, sFieldName: WideString;
+  FFound:boolean;
+begin
+  if edSearch.Text <> '' then
+  try
+     FFound:=false;
+     MemDtsTranslations.DisableControls;
+     MemDtsTranslations.First;
+     while (not MemDtsTranslations.EOF) and (not FFound) do
+     begin
+          sFieldName := MemDtsTranslations.FieldByName('FieldName').AsString;
+          sOriginalText := MemDtsTranslations.FieldByName('OriginalText').AsString;
+          sTranslatedText := MemDtsTranslations.FieldByName('TranslatedText').AsString;
+          if ( ((cbSearchField.Text='FieldName') and AnsiContainsText(sOriginalText,edSearch.Text))
+             or ((cbSearchField.Text='Original') and AnsiContainsText(sOriginalText,edSearch.Text))
+             or ((cbSearchField.Text='Translated') and AnsiContainsText(sTranslatedText,edSearch.Text))
+             ) then
+               FFound:=true
+          else
+              MemDtsTranslations.Next;
+          Application.ProcessMessages;
+     end;
+     if not FFound then
+     begin
+          MessageDlg('Not Founded!', mtInformation, [mbOK], 0);
+          MemDtsTranslations.First;
+     end;
+     MemDtsTranslations.EnableControls;
+  except
+    ;
+  end;
+end;
+
 function TfrmMain.LoadFromZipFile(sZipFile: string): boolean;
 begin
   try
@@ -1351,10 +1387,7 @@ begin
     MemDtsTranslations.Open;
     //MemDtsTranslations.Clear(false);
 
-    if chkStringFromValues.Checked then
-      sLangSource := ''
-    else
-      sLangSource := '-' + LowerCase(cbOriginalLang.Text);
+    sLangSource := '' ;
 
     try
       for i := 0 to slDir.Count - 1 do
@@ -1700,10 +1733,7 @@ begin
       for i := 0 to slDir.Count - 1 do
       begin
         sLangTranslated := cbTranslatedLang.Text;
-        if chkStringFromValues.Checked then
-          sLangSource := ''
-        else
-          sLangSource := '-' + cbOriginalLang.Text;
+        sLangSource := '' ;
         try
           // main dir
           CreateDir(AppendPathDelim(AppendPathDelim(slDir[i]) + 'res') +

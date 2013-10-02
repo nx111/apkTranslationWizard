@@ -105,9 +105,18 @@ msgstr ""
 msgid "Write translated's XMLs for all existing dictionaries"
 msgstr ""
 
+#: tfrmmain.btsearch.caption
+msgid "Search"
+msgstr ""
+
 #: tfrmmain.caption
 msgctxt "TFRMMAIN.CAPTION"
-msgid "ApkTranslationWizard by esvignolo - Version 1.0 (beta5)"
+msgid "ApkTranslationWizard ( Author:esvignolo,Modifier: nx111) - V1.0 (beta5)"
+msgstr ""
+
+#: tfrmmain.cbsearchfield.text
+msgctxt "tfrmmain.cbsearchfield.text"
+msgid "Original"
 msgstr ""
 
 #: tfrmmain.chkreplaceresourcearsc.caption
@@ -118,14 +127,6 @@ msgstr ""
 msgid "Sign the APK"
 msgstr ""
 
-#: tfrmmain.chkstringfromvalues.caption
-msgid "Use \"\\values\\\" as source"
-msgstr ""
-
-#: tfrmmain.chkstringfromvalues.hint
-msgid "Take \\values directory as original language"
-msgstr ""
-
 #: tfrmmain.dbgdata.columns[0].title.caption
 msgctxt "TFRMMAIN.DBGDATA.COLUMNS[0].TITLE.CAPTION"
 msgid "ApkName"
@@ -133,7 +134,7 @@ msgstr ""
 
 #: tfrmmain.dbgdata.columns[1].title.caption
 msgctxt "TFRMMAIN.DBGDATA.COLUMNS[1].TITLE.CAPTION"
-msgid "Fieldname"
+msgid "FieldName"
 msgstr ""
 
 #: tfrmmain.dbgdata.columns[2].title.caption
@@ -162,12 +163,12 @@ msgstr ""
 
 #: tfrmmain.dbgdict.columns[2].title.caption
 msgctxt "TFRMMAIN.DBGDICT.COLUMNS[2].TITLE.CAPTION"
-msgid "OriginalText"
+msgid "Original"
 msgstr ""
 
 #: tfrmmain.dbgdict.columns[3].title.caption
 msgctxt "TFRMMAIN.DBGDICT.COLUMNS[3].TITLE.CAPTION"
-msgid "TranslatedText"
+msgid "Translated"
 msgstr ""
 
 #: tfrmmain.label2.caption
@@ -176,6 +177,10 @@ msgstr ""
 
 #: tfrmmain.label3.caption
 msgid "Dictionary:"
+msgstr ""
+
+#: tfrmmain.label4.caption
+msgid "By"
 msgstr ""
 
 #: tfrmmain.label5.caption

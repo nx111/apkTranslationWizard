@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
     <Version Value="9"/>
@@ -18,7 +18,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="1"/>
-      <BuildNr Value="23"/>
+      <BuildNr Value="25"/>
       <StringTable CompanyName="by esvignolo" ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="4" Active="Debug">
@@ -38,9 +38,9 @@
           <CodeGeneration>
             <SmartLinkUnit Value="True"/>
             <Optimizations>
+              <OptimizationLevel Value="3"/>
               <VariablesInRegisters Value="True"/>
               <UncertainOptimizations Value="True"/>
-              <OptimizationLevel Value="3"/>
             </Optimizations>
           </CodeGeneration>
           <Linking>
@@ -77,8 +77,8 @@
           <CodeGeneration>
             <SmartLinkUnit Value="True"/>
             <Optimizations>
-              <UncertainOptimizations Value="True"/>
               <OptimizationLevel Value="3"/>
+              <UncertainOptimizations Value="True"/>
             </Optimizations>
           </CodeGeneration>
           <Linking>
@@ -115,8 +115,8 @@
           <CodeGeneration>
             <SmartLinkUnit Value="True"/>
             <Optimizations>
-              <UncertainOptimizations Value="True"/>
               <OptimizationLevel Value="3"/>
+              <UncertainOptimizations Value="True"/>
             </Optimizations>
           </CodeGeneration>
           <Linking>
@@ -147,7 +147,6 @@
     <RunParams>
       <local>
         <FormatVersion Value="1"/>
-        <LaunchingApplication PathPlusParams="\usr\bin\xterm -T 'Lazarus Run Output' -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
         <WorkingDirectory Value="\home\bc\ApkTranslationWizard\"/>
       </local>
     </RunParams>
@@ -164,7 +163,7 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="59">
+    <Units Count="62">
       <Unit0>
         <Filename Value="ApkTranslationWizard.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -183,12 +182,12 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="2140"/>
-        <CursorPos X="19" Y="2157"/>
+        <TopLine Value="93"/>
+        <CursorPos X="7" Y="103"/>
         <UsageCount Value="200"/>
         <Bookmarks Count="2">
-          <Item0 X="1" Y="332" ID="2"/>
-          <Item1 X="32" Y="767" ID="1"/>
+          <Item0 X="1" Y="333" ID="2"/>
+          <Item1 X="32" Y="768" ID="1"/>
         </Bookmarks>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -611,7 +610,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="415"/>
         <CursorPos X="11" Y="390"/>
-        <UsageCount Value="37"/>
+        <UsageCount Value="45"/>
       </Unit56>
       <Unit57>
         <Filename Value="components\lnet\trunk\lib\lcontainersh.inc"/>
@@ -628,128 +627,83 @@
         <UsageCount Value="11"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit58>
+      <Unit59>
+        <Filename Value="..\..\..\..\media\diskf\Linux\lazarus\kzdesktop_beta02\kzlazdesktop.pas"/>
+        <ComponentName Value="KZLazDesktopInterface"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="KZLazDesktop"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1538"/>
+        <CursorPos X="70" Y="1543"/>
+        <UsageCount Value="10"/>
+      </Unit59>
+      <Unit60>
+        <Filename Value="..\..\..\..\usr\share\lazarus\1.1.99pre-release\ide\raw_window.pas"/>
+        <UnitName Value="raw_window"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="10"/>
+      </Unit60>
+      <Unit61>
+        <Filename Value="..\..\..\..\usr\share\lazarus\1.1.99pre-release\components\ideintf\componentreg.pas"/>
+        <UnitName Value="ComponentReg"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="115"/>
+        <CursorPos X="19" Y="129"/>
+        <UsageCount Value="10"/>
+      </Unit61>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="12" HistoryIndex="11">
       <Position1>
         <Filename Value="main.pas"/>
-        <Caret Line="1942" Column="1" TopLine="1926"/>
+        <Caret Line="2182" Column="68" TopLine="2176"/>
       </Position1>
       <Position2>
         <Filename Value="main.pas"/>
-        <Caret Line="2166" Column="18" TopLine="2150"/>
+        <Caret Line="2181" Column="68" TopLine="2175"/>
       </Position2>
       <Position3>
         <Filename Value="main.pas"/>
-        <Caret Line="514" Column="30" TopLine="509"/>
+        <Caret Line="2180" Column="68" TopLine="2174"/>
       </Position3>
       <Position4>
         <Filename Value="main.pas"/>
-        <Caret Line="2177" Column="11" TopLine="2162"/>
+        <Caret Line="2179" Column="68" TopLine="2173"/>
       </Position4>
       <Position5>
         <Filename Value="main.pas"/>
-        <Caret Line="2164" Column="17" TopLine="2154"/>
+        <Caret Line="1321" Column="1" TopLine="1303"/>
       </Position5>
       <Position6>
         <Filename Value="main.pas"/>
-        <Caret Line="2199" Column="9" TopLine="2190"/>
+        <Caret Line="2132" Column="3" TopLine="2105"/>
       </Position6>
       <Position7>
         <Filename Value="main.pas"/>
-        <Caret Line="2164" Column="4" TopLine="2153"/>
+        <Caret Line="1322" Column="3" TopLine="1310"/>
       </Position7>
       <Position8>
         <Filename Value="main.pas"/>
-        <Caret Line="2329" Column="37" TopLine="2314"/>
+        <Caret Line="1224" Column="3" TopLine="1213"/>
       </Position8>
       <Position9>
         <Filename Value="main.pas"/>
-        <Caret Line="1733" Column="54" TopLine="1"/>
+        <Caret Line="1142" Column="25" TopLine="1130"/>
       </Position9>
       <Position10>
         <Filename Value="main.pas"/>
-        <Caret Line="1732" Column="54" TopLine="1709"/>
+        <Caret Line="1225" Column="3" TopLine="1213"/>
       </Position10>
       <Position11>
         <Filename Value="main.pas"/>
-        <Caret Line="154" Column="1" TopLine="139"/>
+        <Caret Line="1219" Column="27" TopLine="1171"/>
       </Position11>
       <Position12>
         <Filename Value="main.pas"/>
-        <Caret Line="332" Column="1" TopLine="315"/>
+        <Caret Line="1298" Column="38" TopLine="1298"/>
       </Position12>
-      <Position13>
-        <Filename Value="main.pas"/>
-        <Caret Line="96" Column="1" TopLine="84"/>
-      </Position13>
-      <Position14>
-        <Filename Value="main.pas"/>
-        <Caret Line="2051" Column="3" TopLine="2047"/>
-      </Position14>
-      <Position15>
-        <Filename Value="main.pas"/>
-        <Caret Line="2093" Column="4" TopLine="2079"/>
-      </Position15>
-      <Position16>
-        <Filename Value="main.pas"/>
-        <Caret Line="2092" Column="26" TopLine="2092"/>
-      </Position16>
-      <Position17>
-        <Filename Value="main.pas"/>
-        <Caret Line="1394" Column="15" TopLine="1381"/>
-      </Position17>
-      <Position18>
-        <Filename Value="main.pas"/>
-        <Caret Line="1687" Column="7" TopLine="1675"/>
-      </Position18>
-      <Position19>
-        <Filename Value="main.pas"/>
-        <Caret Line="2188" Column="26" TopLine="2172"/>
-      </Position19>
-      <Position20>
-        <Filename Value="main.pas"/>
-        <Caret Line="2161" Column="98" TopLine="2144"/>
-      </Position20>
-      <Position21>
-        <Filename Value="main.pas"/>
-        <Caret Line="2162" Column="9" TopLine="2145"/>
-      </Position21>
-      <Position22>
-        <Filename Value="main.pas"/>
-        <Caret Line="129" Column="52" TopLine="120"/>
-      </Position22>
-      <Position23>
-        <Filename Value="main.pas"/>
-        <Caret Line="2205" Column="18" TopLine="2176"/>
-      </Position23>
-      <Position24>
-        <Filename Value="main.pas"/>
-        <Caret Line="2218" Column="24" TopLine="2196"/>
-      </Position24>
-      <Position25>
-        <Filename Value="main.pas"/>
-        <Caret Line="85" Column="24" TopLine="68"/>
-      </Position25>
-      <Position26>
-        <Filename Value="main.pas"/>
-        <Caret Line="1296" Column="29" TopLine="1293"/>
-      </Position26>
-      <Position27>
-        <Filename Value="main.pas"/>
-        <Caret Line="85" Column="1" TopLine="72"/>
-      </Position27>
-      <Position28>
-        <Filename Value="main.pas"/>
-        <Caret Line="1293" Column="1" TopLine="84"/>
-      </Position28>
-      <Position29>
-        <Filename Value="main.pas"/>
-        <Caret Line="91" Column="1" TopLine="77"/>
-      </Position29>
-      <Position30>
-        <Filename Value="main.pas"/>
-        <Caret Line="106" Column="46" TopLine="93"/>
-      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -764,10 +718,10 @@
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
-      <SmallerCode Value="True"/>
       <Optimizations>
         <UncertainOptimizations Value="True"/>
       </Optimizations>
+      <SmallerCode Value="True"/>
     </CodeGeneration>
     <Linking>
       <Options>
@@ -826,4 +780,5 @@
       </Item5>
     </Exceptions>
   </Debugging>
+  <EditorMacros Count="0"/>
 </CONFIG>
