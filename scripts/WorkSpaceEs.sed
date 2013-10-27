@@ -1,1 +1,0 @@
-s/"系统工具"/"Herramientas"/g

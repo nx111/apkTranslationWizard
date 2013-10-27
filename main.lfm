@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 0
+  Left = 114
   Height = 540
-  Top = 28
+  Top = 0
   Width = 690
   Caption = 'ApkTranslationWizard ( Author:esvignolo,Modifier: nx111) - V1.0 (beta5)'
   ClientHeight = 540
@@ -18,13 +18,13 @@ object frmMain: TfrmMain
     Height = 532
     Top = 8
     Width = 690
-    ActivePage = tsTranslations
+    ActivePage = tsEncode
     Align = alBottom
-    TabIndex = 1
+    TabIndex = 2
     TabOrder = 0
     object tsDecode: TTabSheet
       Caption = 'Decode'
-      ClientHeight = 501
+      ClientHeight = 528
       ClientWidth = 686
       object pnlDecodeTop: TPanel
         Left = 0
@@ -33,8 +33,8 @@ object frmMain: TfrmMain
         Width = 686
         Align = alTop
         BevelOuter = bvNone
-        ClientHeight = 35
-        ClientWidth = 686
+        ClientHeight = 31
+        ClientWidth = 682
         TabOrder = 0
         object Label2: TLabel
           Left = 3
@@ -64,8 +64,8 @@ object frmMain: TfrmMain
         Width = 686
         Align = alClient
         BevelOuter = bvNone
-        ClientHeight = 408
-        ClientWidth = 686
+        ClientHeight = 404
+        ClientWidth = 682
         TabOrder = 1
         object chklstApk: TCheckListBox
           Left = 0
@@ -86,8 +86,8 @@ object frmMain: TfrmMain
         Top = 443
         Width = 686
         Align = alBottom
-        ClientHeight = 58
-        ClientWidth = 686
+        ClientHeight = 54
+        ClientWidth = 682
         TabOrder = 2
         object btnDecode: TButton
           Left = 238
@@ -126,7 +126,7 @@ object frmMain: TfrmMain
     end
     object tsTranslations: TTabSheet
       Caption = 'Translations'
-      ClientHeight = 501
+      ClientHeight = 528
       ClientWidth = 686
       object pnlTranslationsTop: TPanel
         Left = 0
@@ -135,8 +135,8 @@ object frmMain: TfrmMain
         Width = 686
         Align = alTop
         BevelOuter = bvNone
-        ClientHeight = 35
-        ClientWidth = 686
+        ClientHeight = 31
+        ClientWidth = 682
         TabOrder = 0
         object Label3: TLabel
           Left = 3
@@ -164,7 +164,7 @@ object frmMain: TfrmMain
         end
         object cbOriginalLang: TComboBox
           Left = 84
-          Height = 27
+          Height = 28
           Top = 5
           Width = 48
           ItemHeight = 0
@@ -240,8 +240,8 @@ object frmMain: TfrmMain
         Width = 686
         Align = alTop
         BevelOuter = bvNone
-        ClientHeight = 154
-        ClientWidth = 686
+        ClientHeight = 150
+        ClientWidth = 682
         TabOrder = 1
         object dbgDict: TDBGrid
           Left = 0
@@ -288,8 +288,8 @@ object frmMain: TfrmMain
         Width = 686
         Align = alTop
         BevelOuter = bvNone
-        ClientHeight = 78
-        ClientWidth = 686
+        ClientHeight = 74
+        ClientWidth = 682
         TabOrder = 2
         OnClick = pnlTranslationsMiddleClick
         object Label7: TLabel
@@ -306,7 +306,7 @@ object frmMain: TfrmMain
         end
         object lblFilterField: TLabel
           Left = 350
-          Height = 17
+          Height = 18
           Top = 10
           Width = 129
           Anchors = [akTop, akRight]
@@ -352,7 +352,7 @@ object frmMain: TfrmMain
         end
         object edtFilter: TEdit
           Left = 483
-          Height = 27
+          Height = 28
           Top = 4
           Width = 146
           Anchors = [akTop, akRight]
@@ -393,7 +393,7 @@ object frmMain: TfrmMain
         end
         object Label4: TLabel
           Left = 542
-          Height = 17
+          Height = 18
           Top = 40
           Width = 16
           Caption = 'By'
@@ -401,7 +401,7 @@ object frmMain: TfrmMain
         end
         object edSearch: TEdit
           Left = 403
-          Height = 27
+          Height = 28
           Top = 34
           Width = 140
           TabOrder = 6
@@ -423,8 +423,8 @@ object frmMain: TfrmMain
         Width = 686
         Align = alClient
         BevelOuter = bvNone
-        ClientHeight = 219
-        ClientWidth = 686
+        ClientHeight = 215
+        ClientWidth = 682
         TabOrder = 3
         object dbgData: TDBGrid
           Left = 0
@@ -475,8 +475,8 @@ object frmMain: TfrmMain
         Width = 686
         Align = alBottom
         BevelOuter = bvNone
-        ClientHeight = 15
-        ClientWidth = 686
+        ClientHeight = 11
+        ClientWidth = 682
         TabOrder = 4
         object pbTranslations: TProgressBar
           Left = 0
@@ -491,7 +491,7 @@ object frmMain: TfrmMain
     end
     object tsEncode: TTabSheet
       Caption = 'Encode'
-      ClientHeight = 501
+      ClientHeight = 528
       ClientWidth = 686
       object pnlEncodeTop: TPanel
         Left = 0
@@ -505,7 +505,7 @@ object frmMain: TfrmMain
         TabOrder = 0
         object Label5: TLabel
           Left = 3
-          Height = 17
+          Height = 18
           Top = 6
           Width = 155
           Caption = 'Availables for Packing :'
@@ -526,17 +526,17 @@ object frmMain: TfrmMain
       end
       object pnlEncodeMiddle: TPanel
         Left = 0
-        Height = 391
+        Height = 418
         Top = 35
         Width = 686
         Align = alClient
         BevelOuter = bvNone
-        ClientHeight = 391
+        ClientHeight = 418
         ClientWidth = 686
         TabOrder = 1
         object chkListForPacking: TCheckListBox
           Left = 0
-          Height = 391
+          Height = 418
           Top = 0
           Width = 518
           Align = alLeft
@@ -550,7 +550,7 @@ object frmMain: TfrmMain
       object pnlEncodeBottom: TPanel
         Left = 0
         Height = 75
-        Top = 426
+        Top = 453
         Width = 686
         Align = alBottom
         BevelOuter = bvNone
@@ -609,7 +609,7 @@ object frmMain: TfrmMain
     end
     object tsLog: TTabSheet
       Caption = 'Log'
-      ClientHeight = 501
+      ClientHeight = 528
       ClientWidth = 686
       object meLog: TMemo
         Left = 0
@@ -623,7 +623,7 @@ object frmMain: TfrmMain
     end
     object tsAbout: TTabSheet
       Caption = 'About'
-      ClientHeight = 501
+      ClientHeight = 528
       ClientWidth = 686
       object meAbout: TMemo
         Left = 0

@@ -853,7 +853,11 @@ begin
             RunAppInMemo(AppendPathDelim(ApplicationDirectory +
               csScriptsDir) + 'java' + csScriptExt + ' -jar "' +
               AppendPathDelim(ApplicationDirectory + csOtherDir) +
-              'signapk.jar" -w testkey.x509.pem testkey.pk8 "' +
+              'signapk.jar" '+
+              AppendPathDelim(ApplicationDirectory + csOtherDir) +
+              'testkey.x509.pem '+
+              AppendPathDelim(ApplicationDirectory + csOtherDir) +
+              'testkey.pk8 "' +
               AppendPathDelim(ApplicationDirectory + csCompiledDir) +
               'unsigned-' + chkListForPacking.Items[i] + '" "' +
               AppendPathDelim(ApplicationDirectory + csCompiledDir) +
